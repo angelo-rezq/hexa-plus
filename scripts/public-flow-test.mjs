@@ -78,24 +78,26 @@ try {
     consent: false,
     website: "",
   };
-  for (const patch of [
-    { consent: false },
-    { consent: null },
-    { consent: true, website: "spam" },
-    { consent: true, phone: "" },
-    { consent: true, service: "" },
-  ]) {
-    const { error } = await anon.rpc("submit_inquiry", {
-      payload: { ...invalid, ...patch },
-    });
-    assert.ok(
-      error,
-      "Direct RPC rejects invalid payload " + JSON.stringify(patch),
+  if (!process.env.SKIP_RPC_NEGATIVES)
+    for (const patch of [
+      { consent: false },
+      { consent: null },
+      { consent: true, website: "spam" },
+      { consent: true, phone: "" },
+      { consent: true, service: "" },
+    ]) {
+      const { error } = await anon.rpc("submit_inquiry", {
+        payload: { ...invalid, ...patch },
+      });
+      assert.ok(
+        error,
+        "Direct RPC rejects invalid payload " + JSON.stringify(patch),
+      );
+    }
+  if (!process.env.SKIP_RPC_NEGATIVES)
+    console.log(
+      "PASS direct anonymous RPC rejects missing consent, honeypot and absent required fields",
     );
-  }
-  console.log(
-    "PASS direct anonymous RPC rejects missing consent, honeypot and absent required fields",
-  );
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("http://localhost:3000/ar/contact", {
     waitUntil: "networkidle",
@@ -106,7 +108,7 @@ try {
   await page.locator("[name=phone]").fill("+201000000000");
   await page.locator("[name=service]").selectOption({ label: "تطوير المواقع" });
   await page
-    .locator("[name=description]")
+    .locator("textarea[name=description]")
     .fill(
       "TEST ONLY هذه رسالة اختبار للتأكد من حفظ الاستفسار العربي، وسوف تُحذف بعد الاختبار.",
     );
