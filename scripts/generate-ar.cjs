@@ -79,7 +79,7 @@ function dir(p) {
     if (f.name === "ar") continue;
     const file = path.join(p, f.name);
     if (f.isDirectory()) dir(file);
-    else if (f.name === "page.tsx")
+    else if (f.name === "page.tsx" && file !== "src/app/(public)/page.tsx")
       convert(file, file.replace("src/app/(public)/", "src/app/(public)/ar/"));
   }
 }
