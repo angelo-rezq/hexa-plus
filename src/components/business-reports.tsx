@@ -29,8 +29,8 @@ export function BusinessReports({
 }) {
   const { ar, t } = useLocale();
   const colors = [
-    "#7293ff",
-    "#a18adf",
+    "#134fe9",
+    "#7852ea",
     "#60baa7",
     "#deb979",
     "#6db4d1",
@@ -126,7 +126,7 @@ export function BusinessReports({
                   <Tooltip {...tooltip} />
                   <Bar
                     dataKey={key}
-                    fill={key === "leads" ? "#7895ee" : "#a18adf"}
+                    fill={key === "leads" ? "#134fe9" : "#7852ea"}
                     radius={[4, 4, 0, 0]}
                   />
                 </BarChart>
@@ -211,13 +211,13 @@ export function BusinessReports({
               <Bar
                 yAxisId="money"
                 dataKey="revenue"
-                fill="#546fb5"
+                fill="#134fe9"
                 radius={[4, 4, 0, 0]}
               />
               <Line
                 yAxisId="count"
                 dataKey="leads"
-                stroke="#b39ae3"
+                stroke="#a48aff"
                 strokeWidth={2}
               />
               <Legend wrapperStyle={{ fontSize: 10 }} />

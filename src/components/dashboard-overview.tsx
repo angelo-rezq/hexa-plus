@@ -154,8 +154,8 @@ export function DashboardOverview({
                       x2="0"
                       y2="1"
                     >
-                      <stop offset="0%" stopColor="#5278ff" stopOpacity={0.3} />
-                      <stop offset="100%" stopColor="#5278ff" stopOpacity={0} />
+                      <stop offset="0%" stopColor="#134fe9" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#134fe9" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid
@@ -185,7 +185,7 @@ export function DashboardOverview({
                   <Area
                     type="monotone"
                     dataKey="revenue"
-                    stroke="#6b89ff"
+                    stroke="#718fff"
                     strokeWidth={2}
                     fill="url(#revenue-fill)"
                   />
@@ -241,8 +241,8 @@ export function DashboardOverview({
                       <i
                         style={{
                           background: [
-                            "#6285ff",
-                            "#8b7af7",
+                            "#134fe9",
+                            "#7852ea",
                             "#48b5c4",
                             "#b58bf5",
                             "#deb26c",
