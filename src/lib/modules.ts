@@ -1267,4 +1267,5 @@ export const modules:Record<string,Module>={
     ]
   }
 };
+modules['task-attachments']={table:'task_attachments',label:'Task attachments',ar:'مرفقات المهام',permission:'tasks',fields:[{key:'task_id',label:'Task',type:'relation',relation:'tasks',required:true},{key:'file_id',label:'File',type:'relation',relation:'files',required:true}]};
 export const tableLabel=(row:Record<string,unknown>)=>String(row.name??row.title??row.invoice_number??row.key??row.email??row.id??"Record");
