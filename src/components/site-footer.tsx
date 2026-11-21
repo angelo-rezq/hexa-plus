@@ -13,7 +13,10 @@ export function SiteFooter({
             HEXA<span>PLUS</span>
             <sup>+</sup>
           </div>
-          <p>Technology. Creativity. Business growth.</p>
+          <p>
+            {settings.footer_description ||
+              "Technology. Creativity. Business growth."}
+          </p>
           <p>Minya, Egypt. Built for what comes next.</p>
         </div>
         <div>

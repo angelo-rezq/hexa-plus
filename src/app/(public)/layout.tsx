@@ -24,7 +24,12 @@ export default async function PublicLayout({
       {ar ? <ArabicHeader /> : <SiteHeader />}
       {children}
       {ar ? (
-        <ArabicFooter settings={settings} />
+        <ArabicFooter
+          settings={{
+            ...settings,
+            footer_description: settings.footer_description_ar || "",
+          }}
+        />
       ) : (
         <SiteFooter settings={settings} />
       )}

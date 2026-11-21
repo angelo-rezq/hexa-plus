@@ -13,7 +13,7 @@ export function SiteFooter({
             HEXA<span>PLUS</span>
             <sup>+</sup>
           </div>
-          <p> تقنية. إبداع. نمو للأعمال. </p>
+          <p>{settings.footer_description || "تقنية. إبداع. نمو للأعمال."}</p>
           <p> المنيا، مصر. نبني للخطوة القادمة. </p>
         </div>
         <div>

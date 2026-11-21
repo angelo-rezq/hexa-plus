@@ -1,7 +1,21 @@
 import Link from "next/link";
+import { mediaSource } from "@/lib/media";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check } from "lucide-react";
 import { publicData } from "@/lib/public-data";
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const { services } = await publicData();
+  const service = services.find((s) => s.slug === slug);
+  return {
+    title: service?.name || "Services",
+    description: service?.description,
+  };
+}
 export default async function Service({
   params,
 }: {
@@ -21,6 +35,13 @@ export default async function Service({
       </Link>
       <h1 className="page-title">{s.name}</h1>
       <p className="page-intro">{s.description}</p>
+      {s.image_url && (
+        <img
+          className="service-hero-image"
+          src={mediaSource(s.image_url)}
+          alt={s.name}
+        />
+      )}
       <Link
         href={"/contact?service=" + encodeURIComponent(s.name)}
         className="primary-link"
