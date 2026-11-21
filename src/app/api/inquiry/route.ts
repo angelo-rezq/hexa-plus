@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
+import { hasAllowedOrigin } from "@/lib/request-origin";
 import { inquirySchema } from "@/lib/validation";
 import { supabase, configured } from "@/lib/supabase/server";
 export async function POST(request: Request) {
   try {
-    const origin = request.headers.get("origin");
-    if (origin && new URL(request.url).host !== new URL(origin).host)
+    if (!hasAllowedOrigin(request))
       return NextResponse.json(
         { error: "Invalid request origin." },
         { status: 403 },

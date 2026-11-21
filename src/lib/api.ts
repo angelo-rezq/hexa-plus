@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { hasAllowedOrigin } from "./request-origin";
 import { supabase } from "./supabase/server";
 export async function apiUser(permission?: string) {
   const db = await supabase();
@@ -15,13 +16,7 @@ export async function apiUser(permission?: string) {
   return { db, user };
 }
 export function sameOrigin(request: Request) {
-  const origin = request.headers.get("origin");
-  if (
-    origin &&
-    new URL(origin).host !==
-      (request.headers.get("host") || new URL(request.url).host)
-  )
-    throw new Error("PERMISSION_DENIED");
+  if (!hasAllowedOrigin(request)) throw new Error("PERMISSION_DENIED");
 }
 export function apiError(e: unknown) {
   const message = e instanceof Error ? e.message : "Request failed";
