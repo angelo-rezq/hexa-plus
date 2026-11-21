@@ -25,13 +25,26 @@ export function AgencyHome({
   ar = false,
   portfolio,
   services,
+  settings = {},
 }: {
   ar?: boolean;
   portfolio: Project[];
   services: Service[];
+  settings?: Record<string, string>;
 }) {
   const t = (en: string, arabic: string) => (ar ? arabic : en);
   const href = (path: string) => (ar ? "/ar" : "") + path;
+  const customTitle =
+    settings.hero_title &&
+    settings.hero_title !== "Your vision.\nOur digital\nexecution."
+      ? settings.hero_title
+      : "";
+  const customDescription =
+    settings.hero_description &&
+    settings.hero_description !==
+      "We combine technology, creativity, and strategy to build digital experiences that move businesses forward."
+      ? settings.hero_description
+      : "";
   return (
     <main id="main" className="agency-home">
       <section className="agency-hero">
@@ -50,20 +63,34 @@ export function AgencyHome({
           </div>
           <div className="agency-hero-grid">
             <div className="agency-hero-copy">
-              <h1>
-                <span>{t("Ambitious ideas.", "أفكار جريئة.")}</span>
-                <span className="hero-outline">
-                  {t("Real impact.", "وأثر حقيقي.")}
-                  <span className="headline-dot">•</span>
-                </span>
+              <h1 className={customTitle ? "custom-hero-title" : ""}>
+                {customTitle ? (
+                  customTitle.split("\n").map((line, i, lines) => (
+                    <span
+                      key={i}
+                      className={i === lines.length - 1 ? "hero-outline" : ""}
+                    >
+                      {line}
+                    </span>
+                  ))
+                ) : (
+                  <>
+                    <span>{t("Ambitious ideas.", "أفكار جريئة.")}</span>
+                    <span className="hero-outline">
+                      {t("Real impact.", "وأثر حقيقي.")}
+                      <span className="headline-dot">•</span>
+                    </span>
+                  </>
+                )}
               </h1>
               <div className="hero-intro-row">
                 <span className="hero-small-index">(01—∞)</span>
                 <p>
-                  {t(
-                    "We turn what’s next into what’s real. Digital products, distinctive brands and marketing that moves your business forward.",
-                    "نحوّل الأفكار إلى منتجات رقمية، وعلامات مميزة، وتسويق يدفع أعمالك للأمام. من أول فكرة إلى تجربة تستحق أن تُرى.",
-                  )}
+                  {customDescription ||
+                    t(
+                      "We turn what’s next into what’s real. Digital products, distinctive brands and marketing that moves your business forward.",
+                      "نحوّل الأفكار إلى منتجات رقمية، وعلامات مميزة، وتسويق يدفع أعمالك للأمام. من أول فكرة إلى تجربة تستحق أن تُرى.",
+                    )}
                 </p>
               </div>
               <div className="agency-hero-actions">
