@@ -42,9 +42,9 @@ The existing deployment has its owner provisioned already. Subsequent members ca
 
 ## Website content
 
-Services, portfolio, gallery media and approved testimonials are managed in their modules. Draft media stays private until linked to published content. Empty portfolio and testimonial sections are honest empty states, not fabricated work or quotes.
+Services, portfolio, gallery media and approved testimonials are managed in their modules. Draft media stays private until linked to published content. Empty portfolio and testimonial sections are honest empty states, not fabricated work or quotes. The separate owner-approved portfolio import adds only supplied projects, with actual screenshots and observed descriptions; it does not invent metrics or private client data.
 
-Website Settings supports public `hero_title`, `hero_description`, `address`, `contact_email`, `contact_phone`, approved `social_*` links and `page_about`, `page_process`, `page_industries`, `page_careers`, `page_faq`, `page_privacy`, `page_terms` body overrides. The supplied logo is deliberately not redrawn. Privacy/terms are an operational starting draft, not legal advice; the company should review them before collecting real client data.
+Website Settings supports public `hero_title`, `hero_description`, `address`, `contact_email`, `contact_phone`, approved `social_*` links and `page_about`, `page_process`, `page_industries`, `page_careers`, `page_faq`, `page_privacy`, `page_terms` body overrides. Arabic overrides use the same keys with `_ar` appended, including `hero_title_ar`, `hero_description_ar`, `address_ar` and `page_about_ar`. Services, portfolio narratives and approved testimonials have explicit Arabic fields in migration 004. The `/ar` public route tree includes all public pages and service details; language links preserve the current path and reload the document to keep HTML language/direction correct. No translation service or paid API is required. Arabic templates are generated from reviewed copy in `src/lib/ar-copy.tsv`; after template changes, run `node scripts/generate-ar.cjs` and inspect the generated routes. Dynamic company content must be entered in both languages. Locally hosted Manrope and Noto Sans Arabic fonts include their OFL licenses. The supplied logo is deliberately not redrawn. Privacy/terms are an operational starting draft, not legal advice; the company should review them before collecting real client data.
 
 ## Workspace
 
@@ -61,10 +61,13 @@ Deadline notices are checked on workspace visits and de-duplicated per Cairo cal
 - `scripts/integration-test.ts`: creates clearly labeled temporary QA users/records, tests real role JWTs and negative RLS/finance/media boundaries, then retains them only for the following browser checks.
 - `scripts/browser-test.mjs`: tests real database-backed create/search/detail/board/PDF flows and desktop/mobile/RTL rendering with system Chrome.
 - `scripts/cleanup-test.ts`: removes the temporary QA data/users/media. Run it even after a browser-test failure.
+- `scripts/realtime-test.ts`: creates two temporary authenticated sessions, waits for Postgres system readiness, confirms recipient-only WebSocket INSERT delivery and removes its fixtures.
+- `scripts/public-flow-test.mjs`: real Arabic inquiry-to-lead/consent/notification flow, direct-RPC negatives, public project screenshots and draft exclusion; removes its inquiry fixture in finally.
+- `scripts/arabic-test.mjs`: public Arabic routes, 20 service details, RTL, responsive overflow, validation and language switching.
 - `scripts/visual-check.mjs`: captures public desktop/mobile screenshots. Inspect actual screenshots, not only console assertions.
 
 The integration scripts target the configured database. Use a separate staging project once real company records exist. Never run destructive QA scripts blindly against a populated production database.
 
 ## Remaining release checks
 
-This repository is a phased working build, not a claim that every long-spec acceptance criterion has received final sign-off. Complete live-site verification after each deploy, the two-recipient Realtime isolation test, real invitation delivery with an approved recipient, and a full Arabic-language/content review. Review module-level file scope, legal text and abuse protection before real client onboarding. The UI is bilingual for navigation, common controls and field/status labels; company-written content remains in its entered language. Some secondary explanatory/report strings still need a final Arabic pass.
+This repository is a phased working build, not a claim that every long-spec acceptance criterion has received final sign-off. Complete live-site verification after each deploy, real invitation delivery with an approved recipient and company approval of the bilingual content. The two-recipient Realtime isolation test passes after explicitly waiting for the replication listener system-ready event. Review module-level file scope, legal text and abuse protection before real client onboarding. The public visitor site has a complete Arabic route tree and translated seed service content. Future company-written content needs its Arabic CMS fields filled. The private workspace is bilingual for navigation, common controls and field/status labels; some secondary explanatory/report strings still need a final Arabic pass.
