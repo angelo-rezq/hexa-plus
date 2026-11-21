@@ -49,17 +49,17 @@ export function HexaMotion({ ar = false }: { ar?: boolean }) {
         <svg viewBox="0 0 520 540" aria-hidden="true">
           <defs>
             <linearGradient id="hex-front" x1="0" y1="0" x2="1" y2="1">
-              <stop stopColor="#b8c6ff" />
-              <stop offset=".43" stopColor="#6786ff" />
-              <stop offset="1" stopColor="#2542c9" />
+              <stop stopColor="#a489ff" />
+              <stop offset=".43" stopColor="#6245e3" />
+              <stop offset="1" stopColor="#134fe9" />
             </linearGradient>
             <linearGradient id="hex-side" x1="0" x2="1">
-              <stop stopColor="#1d34a4" />
-              <stop offset="1" stopColor="#060f3b" />
+              <stop stopColor="#17359d" />
+              <stop offset="1" stopColor="#020f3a" />
             </linearGradient>
             <linearGradient id="hex-top" x1="0" y1="0" x2="1" y2="1">
-              <stop stopColor="#e3eaff" />
-              <stop offset="1" stopColor="#6989ff" />
+              <stop stopColor="#bdabff" />
+              <stop offset="1" stopColor="#7852ea" />
             </linearGradient>
           </defs>
           <g className="hex-depth">
@@ -71,13 +71,13 @@ export function HexaMotion({ ar = false }: { ar?: boolean }) {
             />
             <path
               d="m74 154 19 25v216l-19-25Zm372 0 19 25v216l-19-25Z"
-              fill="#314cac"
+              fill="#4933b9"
             />
             <path
               d="M260 46 446 154 446 370 260 478 74 370 74 154Z M260 145 160 202 160 320 260 379 360 320 360 202Z"
               fill="url(#hex-front)"
               fillRule="evenodd"
-              stroke="#a7baff"
+              stroke="#b3a0f6"
               strokeWidth="1"
             />
             <path
@@ -87,10 +87,10 @@ export function HexaMotion({ ar = false }: { ar?: boolean }) {
             />
             <path
               d="m260 379 100-59v-118l86-48v216L260 478Z"
-              fill="#2947d4"
+              fill="#134fe9"
               opacity=".8"
             />
-            <path d="m74 370 86-50 100 59v99Z" fill="#617ff6" />
+            <path d="m74 370 86-50 100 59v99Z" fill="#6845e2" />
             <path
               d="m260 46 186 108M74 154l86 48M260 379v99"
               fill="none"

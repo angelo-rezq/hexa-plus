@@ -29,7 +29,7 @@ export function HexaScene({
         renderer.setClearColor(0x000000, 0);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.15;
+        renderer.toneMappingExposure = 0.9;
         target.appendChild(renderer.domElement);
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(37, 1, 0.1, 50);
@@ -67,19 +67,37 @@ export function HexaScene({
           curveSegments: 10,
         });
         geometry.center();
+        const positions = geometry.getAttribute("position");
+        const vertexColors: number[] = [];
+        const brandBlue = new THREE.Color("#134fe9");
+        const brandViolet = new THREE.Color("#7852ea");
+        for (let i = 0; i < positions.count; i++) {
+          const mix = THREE.MathUtils.clamp(
+            (positions.getX(i) + positions.getY(i) * 0.6 + 2.5) / 5,
+            0,
+            1,
+          );
+          const color = brandBlue.clone().lerp(brandViolet, mix);
+          vertexColors.push(color.r, color.g, color.b);
+        }
+        geometry.setAttribute(
+          "color",
+          new THREE.Float32BufferAttribute(vertexColors, 3),
+        );
         const material = new THREE.MeshPhysicalMaterial({
-          color: 0x3d5cdb,
-          metalness: 0.72,
+          color: 0xffffff,
+          vertexColors: true,
+          metalness: 0.5,
           roughness: 0.22,
           clearcoat: 1,
           clearcoatRoughness: 0.1,
-          envMapIntensity: 1.25,
+          envMapIntensity: 0.6,
         });
         const ring = new THREE.Mesh(geometry, material);
         group.add(ring);
         const plusMaterial = new THREE.MeshPhysicalMaterial({
-          color: 0xc1cfff,
-          metalness: 0.88,
+          color: 0x7852ea,
+          metalness: 0.45,
           roughness: 0.13,
           clearcoat: 1,
         });
@@ -91,13 +109,13 @@ export function HexaScene({
           new THREE.Mesh(gb, plusMaterial),
         );
         scene.add(plus);
-        const key = new THREE.DirectionalLight(0xdde8ff, 5);
+        const key = new THREE.DirectionalLight(0xffffff, 3);
         key.position.set(-3, 5, 6);
         scene.add(key);
-        const rim = new THREE.DirectionalLight(0x6884ff, 5);
+        const rim = new THREE.DirectionalLight(0x7852ea, 3);
         rim.position.set(4, -2, -2);
         scene.add(rim);
-        scene.add(new THREE.AmbientLight(0xbac9ff, 1));
+        scene.add(new THREE.AmbientLight(0xffffff, 0.6));
         let visible = true,
           frame = 0,
           t = 0,
