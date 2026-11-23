@@ -1,69 +1,62 @@
-# HEXA PLUS
+<div align="center">
 
-**Developed by Eng. Angelo Rezq**
+# ⬢ HEXA PLUS
 
-HEXA PLUS is a bilingual agency website and business management platform. It combines public-facing company pages with a private workspace for the agency's day-to-day operations.
+**Bilingual agency website and business management platform in one**
 
-## Features
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Platform-Visit-success?style=for-the-badge)](https://hexa-plus.onrender.com)
 
-- Arabic and English public pages for the company, services, portfolio, industries, process, careers, FAQs, and contact.
-- Inquiry forms and public content management.
-- Private workspace modules for leads, projects, tasks, team members, files, invoices, payments, and expenses.
-- Campaign and content records, notifications, audit history, reporting, and website settings.
-- Supabase authentication, PostgreSQL data, private file storage, and row-level access policies.
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Radix UI](https://img.shields.io/badge/Radix_UI-161618?style=flat-square&logo=radixui&logoColor=white)](https://www.radix-ui.com)
+[![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=black)](https://supabase.com)
+[![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black)](https://render.com)
 
-## Technology
+</div>
 
-- Next.js App Router, React, and TypeScript
-- Tailwind CSS and Radix UI components
-- Supabase Auth, PostgreSQL, Storage, and Realtime
-- React Hook Form, Zod, Recharts, Framer Motion, and PDF-lib
+---
 
-## Local development
+## 🌐 Live
 
-Use Node.js 22 or newer.
+- **Platform:** [hexa-plus.onrender.com](https://hexa-plus.onrender.com)
+
+## ✨ Features
+
+- 🌍 **Bilingual (AR/EN) public site** — company, services, portfolio, industries, process, careers, FAQs and contact.
+- 📥 **Inquiry forms** and public content management.
+- 🗂️ **Private workspace** — leads, projects, tasks, team members, files, invoices, payments and expenses.
+- 📣 **Campaign and content records**, notifications, audit history, reporting and website settings.
+- 🔐 **Supabase** authentication, PostgreSQL data, private file storage and row-level access policies.
+
+## 🛠️ Tech Stack
+
+| Layer | Choice |
+| --- | --- |
+| Framework | Next.js (App Router) + React + TypeScript |
+| UI | Tailwind CSS + Radix UI, Framer Motion |
+| Backend | Supabase Auth, PostgreSQL, Storage, Realtime |
+| Forms & Data | React Hook Form, Zod, Recharts, PDF-lib |
+| Hosting | Render |
+
+## 🚀 Getting Started
 
 ```bash
-npm ci
-```
-
-Create a local `.env.local` file with the values for the configured Supabase project and site origin:
-
-```dotenv
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-NEXT_PUBLIC_SITE_URL=
-SUPABASE_SERVER_KEY=
-```
-
-`NEXT_PUBLIC_SUPABASE_ANON_KEY` is the public client key used by this application. `SUPABASE_SERVER_KEY` is server-only. Never expose it in browser code or commit its value.
-
-Apply the SQL files in `supabase/migrations/` in filename order using an authorized database administrator connection. On a new environment, `npm run seed` can add the initial service catalog and approved public identity copy. Do not run database setup or QA scripts against populated production data without reviewing their effects first.
-
-Start the development server:
-
-```bash
+npm install
 npm run dev
-```
-
-## Checks
-
-```bash
-npm test
-npm run typecheck
 npm run build
 ```
 
-The repository also includes integration, browser, Arabic-language, accessibility-related, and release-check scripts. Some integration and cleanup scripts create or remove temporary Supabase records, so use a dedicated test project when possible.
+---
 
-## Deployment
+<div align="center">
 
-The application can run as a Node.js web service. Configure the required environment variables in the hosting provider, run `npm ci && npm run build`, then start the app with `npm start`. Keep database credentials and all server-only keys in the provider's secret settings, not in source control.
+## 👨‍💻 Developed by [Angelo Rezq](https://github.com/angelo-rezq)
 
-## Repository layout
+**Full-Stack Developer · Flutter · Next.js · React**
 
-- `src/app/` - public pages, dashboard routes, and API endpoints
-- `src/components/` - website and workspace UI
-- `src/lib/` - shared data, authentication, validation, and business logic
-- `supabase/migrations/` - database schema and security policies
-- `scripts/` and `tests/` - setup, verification, and QA tools
+[![Portfolio](https://img.shields.io/badge/Portfolio-black?style=for-the-badge)](https://angelo-portfolio.angluosr.workers.dev)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-Chat-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/201127570256)
+[![Email](https://img.shields.io/badge/Email-angelo.rezq.dev%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:angelo.rezq.dev@gmail.com)
+
+</div>
